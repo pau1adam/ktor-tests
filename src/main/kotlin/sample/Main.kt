@@ -16,7 +16,7 @@ fun main(args: Array<String>) {
             get(path = "/demo") {
                 call.respondText("General Kenobi!")
             }
-            get(path = "potato") {
+            get(path = "/potato") {
                 call.respondText("potato")
             }
         }
