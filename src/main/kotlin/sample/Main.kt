@@ -19,25 +19,28 @@ fun main(args: Array<String>) {
                 call.respondText("General Kenobi!")
             }
             get(path = "/potato") {
-                call.respondHtml {
-                    head {
-                        title { +"this is the page title" }
-                    }
-                    body {
-                        p { +"this is a paragraph" }
-                        p { +"this is another paragraph" }
-                        p {
-                            + "this paragraph has an input field for some reason ==> "
-                            input{
-                                value = "default value"
-                                name = "randomInput"
-                                autoFocus = true
-                            }
-                        }
-                    }
-                }
+                call.respondHtml(block = potatoPage)
             }
         }
     }
     server.start(wait = true)
+}
+
+private val potatoPage: HTML.() -> Unit = {
+    head {
+        title { +"this is the page title" }
+    }
+    body {
+        p { +"this is a paragraph" }
+        p { +"this is another paragraph" }
+        p {
+            + "this paragraph has an input field for some reason ==> "
+            input{
+                value = "default value"
+                name = "randomInput"
+                autoFocus = true
+            }
+        }
+    }
+
 }
